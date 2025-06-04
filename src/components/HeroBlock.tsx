@@ -14,7 +14,7 @@ export default function HeroBlock({ backgroundImageUrl }: HeroBlockProps) {
     >
       <div className="overlay" />
       <div className="wrapper">
-        <h1 className="relative text-[62px] font-bold z-3">Welcome</h1>
+        <h1 className="relative text-[62px] font-bold z-3">Welcome.</h1>
         <h2 className="relative text-[24px] font-bold z-3">Millions of movies, TV shows and people to discover. Explore now.</h2>
       </div>
     </section>
