@@ -1,0 +1,37 @@
+.trending,
+.upcoming {
+  .swiper {
+    min-height: 440px;
+    cursor: grab;
+
+    &-slide {
+      width: 240px;
+      user-select: none;
+
+      img {
+        height: 360px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+      }
+
+      &__content {
+        h4 {
+          font-size: 16px;
+          font-weight: 700;
+        }
+
+        .info {
+          p,
+          span {
+            font-weight: 400;
+            color: var(--content-secondary);
+          }
+
+          span {
+            color: var(--content-primary);
+          }
+        }
+      }
+    }
+  }
+}

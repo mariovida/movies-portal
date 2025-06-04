@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background-black: #ffffff;
+  --background-gray-light: #f7f7f7;
 
   --content-primary: #090909;
   --content-secondary: #4f4f4f;
@@ -11,9 +11,9 @@
 }
 
 /* Dark theme */
-[data-theme='dark'] {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+[data-theme="dark"] {
+  --background-black: #032541;
+  --background-gray-light: #090909;
 
   --content-primary: #ffffff;
   --content-secondary: #c8c8c8;
@@ -22,8 +22,8 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Montserrat', sans-serif;
+  background: var(--background-black);
+  color: var(--content-primary);
+  font-family: "Montserrat", sans-serif;
   transition: background 0s ease-in-out, color 0s ease-in-out;
 }

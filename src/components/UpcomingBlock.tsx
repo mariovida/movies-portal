@@ -1,64 +1,35 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { TrendingItem } from "@/types/tmdb";
+import { TrendingItem } from "@/types/tmdb"; // Rename if you have a specific UpcomingItem type
 import Image from "next/image";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 
-type Period = "day" | "week";
-
-export default function TrendingComponent() {
-  const [period, setPeriod] = useState<Period>("day");
+export default function UpcomingBlock() {
+  const [items, setItems] = useState<TrendingItem[]>([]);
+  const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
-
-  // Cache results by period so switching doesn't lose items
-  const itemsCache = useRef<Record<Period, TrendingItem[]>>({
-    day: [],
-    week: [],
-  });
-  const pageCache = useRef<Record<Period, number>>({ day: 1, week: 1 });
-
-  // Track current items for selected period
-  const [items, setItems] = useState<TrendingItem[]>([]);
 
   const loadMore = async () => {
     if (loading || !hasMore) return;
     setLoading(true);
 
-    const page = pageCache.current[period];
-    const res = await fetch(`/api/trending?period=${period}&page=${page}`);
+    const res = await fetch(`/api/upcoming?page=${page}`);
     const data = await res.json();
 
-    itemsCache.current[period] = [
-      ...itemsCache.current[period],
-      ...data.results,
-    ];
-    pageCache.current[period] = page + 1;
-
-    setItems(itemsCache.current[period]);
+    setItems((prev) => [...prev, ...data.results]);
     setHasMore(data.page < data.total_pages);
+    setPage((prev) => prev + 1);
     setLoading(false);
   };
 
-  // On period change, load cached items immediately or fetch if empty
   useEffect(() => {
-    const cached = itemsCache.current[period];
-    if (cached.length > 0) {
-      setItems(cached);
-      setHasMore(true);
-    } else {
-      // Reset caches for this period
-      itemsCache.current[period] = [];
-      pageCache.current[period] = 1;
-      setItems([]);
-      setHasMore(true);
-      loadMore();
-    }
-  }, [period]);
+    loadMore();
+  }, []);
 
   function formatDate(dateString: string | undefined) {
     if (!dateString) return "—";
@@ -84,10 +55,7 @@ export default function TrendingComponent() {
   function SkeletonSlide() {
     return (
       <div className="w-[240px] animate-pulse">
-        <div
-          className="bg-gray-300 h-[360px] w-full"
-          style={{ borderRadius: "8px" }}
-        />
+        <div className="bg-gray-300 h-[360px] w-full rounded-md" />
         <div className="mt-4">
           <div className="h-4 bg-gray-300 rounded w-3/4" />
           <div className="h-4 bg-gray-300 rounded w-1/2 mt-2" />
@@ -97,39 +65,25 @@ export default function TrendingComponent() {
   }
 
   return (
-    <section className="trending">
+    <section className="upcoming">
       <div className="wrapper">
-        <div className="trending-header">
-          <h3 className="text-[32px]">Trending</h3>
-          <button
-            onClick={() => setPeriod("day")}
-            className={`${period === "day" ? "active" : ""}`}
-          >
-            Today
-          </button>
-          <button
-            onClick={() => setPeriod("week")}
-            className={`${period === "week" ? "active" : ""}`}
-          >
-            This week
-          </button>
+        <div className="upcoming-header">
+          <h3 className="text-[32px]">Upcoming</h3>
         </div>
 
         <Swiper
           slidesPerView="auto"
           spaceBetween={30}
           freeMode={true}
-          onReachEnd={() => {
-            loadMore();
-          }}
+          onReachEnd={loadMore}
         >
           {uniqueItems.map((item) => (
-            <SwiperSlide key={`${item.media_type}-${item.id}`}>
+            <SwiperSlide key={`${item.media_type || "movie"}-${item.id}`}>
               <Image
                 src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                 width={240}
                 height={360}
-                alt={item.title || item.name || "Trending item"}
+                alt={item.title || item.name || "Upcoming item"}
               />
               <div className="swiper-slide__content">
                 <h4 className="text-sm font-semibold truncate">

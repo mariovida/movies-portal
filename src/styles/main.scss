@@ -1,10 +1,12 @@
-@import 'hero';
-@import 'trending';
-@import 'footer';
+@import "hero";
+@import "movies";
+@import "footer";
+
+@import "swiper";
 
 .wrapper {
-    max-width: 1200px;
-    width: 100%;
-    margin: 0 auto;
-    padding: 0 16px;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
 }
