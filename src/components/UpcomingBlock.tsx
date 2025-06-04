@@ -86,9 +86,7 @@ export default function UpcomingBlock() {
                 alt={item.title || item.name || "Upcoming item"}
               />
               <div className="swiper-slide__content">
-                <h4 className="text-sm font-semibold truncate">
-                  {item.title || item.name}
-                </h4>
+                <h4 className="truncate">{item.title || item.name}</h4>
                 <div className="info flex justify-between">
                   <p>{formatDate(item.release_date || item.first_air_date)}</p>
                   {typeof item.vote_average === "number" && (

@@ -7,6 +7,7 @@ export interface TrendingItem {
   first_air_date?: string;
   vote_average?: number;
   poster_path?: string;
+  profile_path?: string;
 }
 
 export interface TrendingResponse {

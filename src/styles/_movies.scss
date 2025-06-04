@@ -1,5 +1,6 @@
 .trending,
-.upcoming {
+.upcoming,
+.popular {
   padding: 50px 0;
 
   &-header {
@@ -11,6 +12,7 @@
       color: var(--content-primary);
       font-weight: 700;
       margin-right: 40px;
+      user-select: none;
     }
 
     button {
@@ -32,4 +34,10 @@
 
 .upcoming {
   background-color: var(--background-gray-light);
+}
+
+.popular {
+  &-header {
+    justify-content: space-between;
+  }
 }

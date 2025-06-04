@@ -6,8 +6,12 @@
 
   --content-primary: #090909;
   --content-secondary: #4f4f4f;
+  --content-brand: #032541;
+  --content-brand-hover: #054274;
 
   --border-low-contrast: #e6e6e6;
+
+  --surface-inverse: #ffffff;
 }
 
 /* Dark theme */
@@ -17,8 +21,12 @@
 
   --content-primary: #ffffff;
   --content-secondary: #c8c8c8;
+  --content-brand: #ffffff;
+  --content-brand-hover: #919191;
 
   --border-low-contrast: #4f4f4f;
+
+  --surface-inverse: #090909;
 }
 
 body {
