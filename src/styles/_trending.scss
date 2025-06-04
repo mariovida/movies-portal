@@ -1,0 +1,61 @@
+.trending {
+    padding: 50px 0;
+
+    &-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 24px;;
+
+        h3 {
+            color: var(--content-primary);
+            font-weight: 700;
+            margin-right: 40px;
+        }
+
+        button {
+            font-size: 16px;
+            font-weight: 400;
+            color: var(--content-secondary);
+            padding: 0 10px 10px 10px;
+            border-bottom: 2px solid var(--border-low-contrast);
+            cursor: pointer;
+
+            &.active {
+                font-weight: 700;;
+                color: var(--content-primary);
+                border-color: var(--content-primary);
+            }
+        }
+    }
+
+    .swiper {
+        min-height: 440px;
+
+        &-slide {
+            width: 240px;
+
+            img {
+                border-radius: 8px;
+                margin-bottom: 16px;
+            }
+
+            &__content {
+                h4 {
+                    font-size: 16px;
+                    font-weight: 700;;
+                }
+                
+                .info {
+                    p, span {
+                        font-weight: 400;
+                        color: var(--content-secondary);
+                    }
+
+                    span {
+                        color: var(--content-primary);
+                    }
+                }
+            }
+        }
+    }
+}
