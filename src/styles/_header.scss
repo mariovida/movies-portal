@@ -28,6 +28,12 @@ header {
 
     &-search {
       padding: 8px;
+
+      svg {
+        path {
+          fill: var(--content-brand);
+        }
+      }
     }
   }
 }

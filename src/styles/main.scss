@@ -1,10 +1,12 @@
-@import "header";
-@import "hero";
-@import "movies";
-@import "join";
-@import "footer";
+@use "header";
+@use "hero";
+@use "movies";
+@use "join";
+@use "footer";
 
-@import "swiper";
+@use "search";
+
+@use "swiper";
 
 .wrapper {
   max-width: 1200px;

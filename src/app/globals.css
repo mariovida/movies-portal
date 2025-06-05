@@ -12,6 +12,7 @@
   --border-low-contrast: #e6e6e6;
 
   --surface-inverse: #ffffff;
+  --surface-gray: #F7F7F7;
 }
 
 /* Dark theme */
@@ -27,6 +28,7 @@
   --border-low-contrast: #4f4f4f;
 
   --surface-inverse: #090909;
+  --surface-gray: #2B2B2B;
 }
 
 body {
