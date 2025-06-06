@@ -140,7 +140,11 @@ export default function SearchOverlay() {
                 />
 
                 <div className="search-results search-results__people">
-                    <h6>Top searched people</h6>
+                    <h6>Top searched people
+                        {query.trim() && (
+                            <span>({results.length} result{results.length !== 1 ? "s" : ""})</span>
+                        )}
+                    </h6>
                     <div className="search-results__people__box">
                         {displayList.map((person) => (
                             <div key={person.id} className="search-results__people__item">
