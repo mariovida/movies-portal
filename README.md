@@ -27,6 +27,8 @@
 
    ```bash
    Example is in .env.local.example file.
+
+   TMDB_API_KEY=********************
    ```
 
 4. **Run the development server**
